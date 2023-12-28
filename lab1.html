@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="nameApp">
+<head>
+    <meta charset="UTF-8" >
+   
+    <title>AngularJs first app</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <style>
+       .container{
+        margin-top: 20%;
+        margin-left: 10%;
+        font-size: 25px;
+        font-family: 'Poppins', sans-serif;
+       } 
+    </style>
+</head>
+<body>
+    <center><div class="container">
+    <div ng-controller="nameCtrl">
+        <label for="firstName">First Name:</label>
+        <input type="text"
+        id="firstName"
+        ng-model="user.firstName"
+        placeholder="enter your firstName">
+        <label for="lastName"><span></span>Last Name:</label>
+        <input type="text" id="lastName" ng-model="user.lastName" placeholder="enter your last Name">
+        <p>your full name:{{ user.firstName }} {{ user.lastName }}</p>
+    </div>
+    </div></center>
+    <script>
+        var app=angular.module('nameApp',[]);
+        app.controller('nameCtrl',function($scope){
+            $scope.user = {
+                firstName:prompt("enter your first name"),
+                lastName:prompt("enter your last name")
+            };
+        });
+    </script>
+</body>
+</html>

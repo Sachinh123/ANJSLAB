@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="shoppingApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shopping list app</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js">
+        
+    </script>
+    <style>
+        h2{
+            background-color: aqua;
+            font-size: 35px;
+            text-align: center;
+
+        }
+    
+    </style>
+</head>
+<body>
+    <div ng-controller="shoppingCtrl">
+        <h2>shopping list</h2>
+        <ul>
+            <li ng-repeat="item in shoppingItems">
+                {{ item.name }} -
+                <button ng-click="removeItem($index)">
+                    Remove
+                </button>
+            </li>
+        </ul>
+        <label for="newItem">New Item:</label>
+        <input type="text" id="newItem" ng-model="newItem" placeholder="Enter a new item">
+        <button ng-click="addItem()">Add item</button>
+    </div>
+    <script>
+        var app=angular.module('shoppingApp',[]);
+        app.controller('shoppingCtrl',function($scope){
+            $scope.shoppingItems =[
+                {
+                    name:'Apples'
+                },
+                {
+                    name:'Banana'
+                },
+                {
+                    name:'Milk'
+                }
+            ];
+            $scope.addItem=function(){
+                if($scope.newItem)
+                {
+                    $scope.shoppingItems.push({ name: $scope.newItem});
+                    $scope.newItem='';
+                }
+            };
+                $scope.removeItem=function(index){
+                    $scope.shoppingItems.splice(index,1);
+                };
+            
+        });
+    </script>
+</body>
+</html>
